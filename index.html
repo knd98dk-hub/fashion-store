@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style & Beauty | Fashion & Nail Inspiration</title>
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #fdfbf7; /* Creamy White Background */
+            --text-color: #333333;
+            --accent-color: #d4af37; /* Gold for luxury feel */
+            --button-bg: #000000;
+            --button-text: #ffffff;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-serif: 'Georgia', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Luxury Makeup/Fashion Image */
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-hero {
+            background-color: white;
+            color: black;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-hero:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* --- Categories --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #777;
+            padding: 0 15px;
+        }
+
+        .btn-shop {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-shop:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: #aaa; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Style & Beauty</div>
+        <div class="tagline">Curated Fashion, Nails & Lifestyle Inspiration</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Elevate Your Everyday</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Discover the best nail art kits, trendy fashion, and beauty essentials.</p>
+            <a href="#collections" class="btn-hero">Shop Trends</a>
+        </div>
+    </section>
+
+    <div class="container" id="collections">
+        <h2 class="section-title">Editor's Picks</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nail Art Kit">
+                <h3>The Ultimate Nail Kit</h3>
+                <p>Salon quality nails at home. UV Lamp + 10 Gel Colors included.</p>
+                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">Check Price</a>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trendy Outfit">
+                <h3>Chic Summer Dress</h3>
+                <p>The viral dress everyone is talking about. Perfect for any occasion.</p>
+                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">Shop Look</a>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gold Accessories">
+                <h3>Gold Jewelry Set</h3>
+                <p>Tarnish-free, minimalist jewelry to elevate your style game.</p>
+                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Style & Beauty. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.7;">As an Amazon Associate, I earn from qualifying purchases.</p>
+    </footer>
+
+</body>
+</html>
