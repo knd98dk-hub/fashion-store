@@ -3,221 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style & Beauty | Premium Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Style & Beauty | The Exclusive Edit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- Modern Reset & Variables --- */
         :root {
             --gold: #D4AF37;
-            --dark: #1a1a1a;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f0f0f; /* Dark Luxury Theme */
+            font-family: 'Jost', sans-serif;
+            background-color: var(--dark);
             color: white;
             overflow-x: hidden;
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* --- Parallax Hero Section --- */
+        /* --- ADVANCED HERO SECTION (VIDEO) --- */
         .hero {
-            /* ඔයා කැමතිම කෙල්ලෙක් ඉන්න Luxury ෆොටෝ එක මෙතනට දාන්න */
-            background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            position: relative;
             height: 100vh;
-            background-attachment: fixed; /* Parallax Effect */
-            background-position: center;
-            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        /* Video Background Styling */
+        .video-bg {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0f0f0f);
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: brightness(0.4); /* Darken video so text pops */
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
+            z-index: 2;
             text-align: center;
-            padding: 20px;
-            backdrop-filter: blur(5px);
+            padding: 40px;
             border: 1px solid var(--glass-border);
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            max-width: 600px;
+            background: rgba(0, 0, 0, 0.3); /* Glass effect */
+            backdrop-filter: blur(8px);
+            border-radius: 0; /* Boxy luxury look */
+            max-width: 700px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin: 0;
+            letter-spacing: 2px;
             background: linear-gradient(to right, #fff, #D4AF37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .btn-glow {
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .btn-luxury {
             display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #D4AF37, #F2D06B);
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            transition: 0.3s;
-        }
-
-        .btn-glow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
-        }
-
-        /* --- Collections Grid --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            margin-top: 30px;
+            padding: 15px 45px;
+            border: 1px solid var(--gold);
             color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: 0.4s;
+            font-size: 0.9rem;
         }
+
+        .btn-luxury:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- PRODUCT GRID WITH BADGES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 { font-size: 3rem; margin-bottom: 10px; color: var(--gold); }
+        .section-header p { color: #888; text-transform: uppercase; letter-spacing: 2px; }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
-        /* --- Glassmorphism Cards --- */
         .card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.3s;
-            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            position: relative; /* For badges */
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-        }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
 
-        .card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .card-info { padding: 20px; text-align: center; }
+        .image-box { position: relative; overflow: hidden; height: 400px; }
         
-        .card h3 { color: #fff; margin: 10px 0; }
-        .card p { color: #ccc; font-size: 0.9rem; }
+        .image-box img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.6s;
+        }
 
-        .btn-shop {
+        .card:hover .image-box img { transform: scale(1.1); }
+
+        /* SALE BADGE (Advanced) */
+        .badge {
+            position: absolute;
+            top: 15px; left: 15px;
+            background: var(--gold);
+            color: black;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .card-details { padding: 25px; text-align: center; }
+        .card-details h3 { margin: 10px 0; font-size: 1.5rem; }
+        .price { color: var(--gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: block; }
+        
+        .btn-buy {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 25px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            width: 100%;
+            padding: 12px 0;
+            background: #222;
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
+        .btn-buy:hover { background: var(--gold); color: black; }
 
-        .btn-shop:hover {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* --- Footer --- */
-        footer {
+        /* --- NEWSLETTER SECTION --- */
+        .newsletter {
+            background: #111;
+            padding: 80px 20px;
             text-align: center;
-            padding: 40px;
-            color: #666;
-            font-size: 0.8rem;
-            border-top: 1px solid #333;
+            border-top: 1px solid #222;
+        }
+        
+        .input-group {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
-        /* Mobile Adjustments */
+        .input-group input {
+            padding: 15px;
+            width: 300px;
+            background: #000;
+            border: 1px solid #333;
+            color: white;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .input-group button {
+            padding: 15px 30px;
+            background: var(--gold);
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+        footer a { color: #777; text-decoration: none; }
+
+        /* Mobile Fix */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            .input-group { flex-direction: column; align-items: center; }
+            .input-group input { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://cdn.coverr.co/videos/crop/y2mate.is%20-%20Fashion%20Model%20Posing%20In%20Neon%20Lights-Zz6_lYv_2-720p-1654162092923.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
             <h1>Style & Beauty</h1>
-            <p style="color: #ddd; font-size: 1.1rem; margin: 20px 0;">Curated Fashion & Nail Art for the Modern Aesthetic.</p>
-            <a href="#shop" class="btn-glow">Explore Trends</a>
+            <p class="subtitle">Curated Luxury. Effortless Style.</p>
+            <a href="#collection" class="btn-luxury">View Collection</a>
         </div>
     </header>
 
-    <div class="container" id="shop">
-        <h2 class="section-title" data-aos="fade-up">Trending Now</h2>
+    <div class="container" id="collection">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Editor's Choice</h2>
+            <p>Handpicked essentials for the new season</p>
+        </div>
         
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nails">
-                <div class="card-info">
-                    <h3>Pro Nail Kit</h3>
-                    <p>Salon quality gel nails at home.</p>
-                    <a href="AMAZON_LINK_HERE" class="btn-shop">Check Price</a>
+                <div class="image-box">
+                    <span class="badge">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nail Kit">
+                </div>
+                <div class="card-details">
+                    <h3>Pro Gel Nail Kit</h3>
+                    <span class="price">$24.99</span>
+                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">Complete home salon set with UV lamp and 10 colors.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Check on Amazon <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dress">
-                <div class="card-info">
-                    <h3>The Viral Dress</h3>
-                    <p>Perfect for any evening occasion.</p>
-                    <a href="AMAZON_LINK_HERE" class="btn-shop">Shop Look</a>
+                <div class="image-box">
+                    <span class="badge" style="background:white; color:black;">Trending</span>
+                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
+                </div>
+                <div class="card-details">
+                    <h3>Velvet Evening Dress</h3>
+                    <span class="price">$45.00</span>
+                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">The viral black velvet dress seen on TikTok.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Shop Now <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
-                <div class="card-info">
-                    <h3>Gold Essentials</h3>
-                    <p>Tarnish-free luxury jewelry.</p>
-                    <a href="AMAZON_LINK_HERE" class="btn-shop">View Collection</a>
+                <div class="image-box">
+                    <span class="badge">50% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
+                </div>
+                <div class="card-details">
+                    <h3>Gold Layered Chain</h3>
+                    <span class="price">$12.50</span>
+                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">Tarnish-free 18k gold plated minimalist necklace.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">View Deal <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
+    <section class="newsletter" data-aos="fade-up">
+        <h3 style="color: var(--gold); font-size: 2rem;">Join the Inner Circle</h3>
+        <p>Get exclusive fashion tips and discount codes delivered to your inbox.</p>
+        <div class="input-group">
+            <input type="email" placeholder="Enter your email address">
+            <button>SUBSCRIBE</button>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Style & Beauty. As an Amazon Associate, I earn from qualifying purchases.</p>
+        <p>&copy; 2025 Style & Beauty. <br> <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+        <p style="margin-top: 10px; opacity: 0.5;">As an Amazon Associate, I earn from qualifying purchases.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init(); // Animations start here
+        AOS.init();
     </script>
-
 </body>
 </html>
