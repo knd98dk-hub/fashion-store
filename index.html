@@ -2,266 +2,320 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style & Beauty | The Exclusive Edit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Style & Beauty | Trending Picks</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* --- CSS Variables & Reset --- */
         :root {
-            --gold: #D4AF37;
-            --dark: #0a0a0a;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --bg-color: #000000;
+            --card-bg: #121212;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a1;
+            --accent: #D4AF37; /* Gold */
+            --btn-color: #ffffff;
         }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             margin: 0;
-            font-family: 'Jost', sans-serif;
-            background-color: var(--dark);
-            color: white;
+            padding: 0;
+            font-family: 'Assistant', sans-serif; /* Shopify Standard Font */
+            background-color: var(--bg-color);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        a { text-decoration: none; }
-
-        /* --- ADVANCED SLIDESHOW HERO SECTION --- */
-        .hero {
-            position: relative;
-            height: 100vh;
+        /* --- STICKY MOBILE HEADER --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .cart-icon { font-size: 1.1rem; color: white; }
+
+        /* --- IMMERSIVE HERO SECTION --- */
+        .hero {
+            height: 85vh; /* Mobile screen optimized */
+            position: relative;
+            display: flex;
+            align-items: flex-end; /* Text at bottom like Instagram stories */
             justify-content: center;
             overflow: hidden;
         }
 
-        /* Slideshow Container */
-        .hero-slideshow {
+        .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-        }
-
-        /* Individual Slides */
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdd403348?q=80&w=800&auto=format&fit=crop'); /* Luxury Jewelry/Fashion */
             background-size: cover;
             background-position: center;
-            animation: slideAnimation 18s infinite ease-in-out;
-            opacity: 0;
-            filter: brightness(0.5); /* Darken images slightly */
+            z-index: -1;
+            animation: zoomEffect 20s infinite alternate;
         }
 
-        /* Slide Images */
-        .slide:nth-child(1) {
-            background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1920');
-            animation-delay: 0s;
-        }
-        .slide:nth-child(2) {
-            background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920');
-            animation-delay: 6s;
-        }
-        .slide:nth-child(3) {
-            background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1920');
-            animation-delay: 12s;
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
         }
 
-        /* Slideshow Keyframes Animation */
-        @keyframes slideAnimation {
-            0% { opacity: 0; transform: scale(1); }
-            5% { opacity: 1; }
-            33% { opacity: 1; transform: scale(1.05); } /* Subtle zoom effect */
-            38% { opacity: 0; }
-            100% { opacity: 0; }
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, #000000 10%, transparent 60%);
         }
 
-        /* Glassmorphism Content Box */
         .hero-content {
             z-index: 2;
             text-align: center;
-            padding: 50px;
-            border: 1px solid var(--glass-border);
-            background: rgba(0, 0, 0, 0.4); /* Glass effect */
-            backdrop-filter: blur(10px); /* Blurs the background behind the box */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            max-width: 700px;
+            padding: 0 20px 60px 20px;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin: 0;
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        .subtitle {
-            font-style: italic;
-            font-size: 1.3rem;
-            margin-top: 15px;
+        .hero p {
+            font-size: 1rem;
             color: #ddd;
-            letter-spacing: 1px;
+            margin-bottom: 25px;
         }
 
-        .btn-luxury {
-            display: inline-block;
-            margin-top: 35px;
-            padding: 15px 50px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+        .btn-main {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: white;
+            color: black;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            border: none;
+            letter-spacing: 1px;
+            border-radius: 4px; /* Slight round like Shopify */
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+            transition: transform 0.2s;
         }
 
-        .btn-luxury::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-            transition: 0.6s;
+        .btn-main:active { transform: scale(0.96); } /* Mobile tap effect */
+
+        /* --- SHOPIFY STYLE GRID (2 COLUMNS) --- */
+        .container { padding: 40px 15px; }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .btn-luxury:hover {
-            background: var(--gold);
-            color: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-luxury:hover::before { left: 100%; }
-
-        /* --- PRODUCT GRID --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
         
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 3rem; margin-bottom: 10px; color: var(--gold); }
-        .section-header p { color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .section-title::after {
+            content: ''; flex: 1; height: 1px; background: #333;
+        }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: 1fr 1fr; /* 2 Items per row - Mobile Standard */
+            gap: 15px; /* Space between items */
         }
 
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            transition: 0.4s;
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
             position: relative;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .img-wrap {
+            position: relative;
+            padding-top: 133%; /* 3:4 Aspect Ratio (Portrait) - Perfect for Fashion */
+            overflow: hidden;
+        }
 
-        .image-box { position: relative; overflow: hidden; height: 400px; }
-        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .card:hover .image-box img { transform: scale(1.1); }
+        .img-wrap img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+        }
 
         .badge {
-            position: absolute; top: 15px; left: 15px;
-            background: var(--gold); color: black;
-            padding: 5px 12px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; z-index: 2;
+            position: absolute;
+            top: 8px; left: 8px;
+            background: white;
+            color: black;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
         }
 
-        .card-details { padding: 25px; text-align: center; }
-        .card-details h3 { margin: 10px 0; font-size: 1.5rem; color: #fff; }
-        .price { color: var(--gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: block; }
-        
-        .btn-buy {
-            display: inline-block; width: 100%; padding: 12px 0;
-            background: #222; color: white; text-transform: uppercase;
-            font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s;
+        .info { padding: 12px 10px; }
+
+        .info h3 {
+            font-size: 0.9rem;
+            margin: 0 0 5px 0;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .btn-buy:hover { background: var(--gold); color: black; }
+
+        .price {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        .btn-buy-small {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid #333;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
 
         /* --- FOOTER --- */
         footer {
-            background: #111; padding: 40px; text-align: center;
-            color: #555; font-size: 0.8rem; border-top: 1px solid #222;
+            text-align: center;
+            padding: 40px 20px 80px 20px;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.8rem;
         }
-        footer p { margin: 5px 0; }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero-content { padding: 30px; margin: 20px; }
+        /* --- MOBILE ANIMATIONS --- */
+        [data-aos] {
+            pointer-events: none;
+        }
+        [data-aos].aos-animate {
+            pointer-events: auto;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-slideshow">
-            <div class="slide"></div> <div class="slide"></div> <div class="slide"></div> </div>
+    <nav>
+        <div class="brand">Style & Beauty</div>
+        <div class="cart-icon"><i class="fas fa-shopping-bag"></i></div>
+    </nav>
 
-        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
-            <h1>Style & Beauty</h1>
-            <p class="subtitle">Curated Luxury. Effortless Style.</p>
-            <a href="#collection" class="btn-luxury">View Collection</a>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>The New<br>Luxury Edit</h1>
+            <p>Trending nails, fashion & accessories.</p>
+            <a href="#shop" class="btn-main">Shop Latest Trends</a>
         </div>
     </header>
 
-    <div class="container" id="collection">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Editor's Choice</h2>
-            <p>Handpicked essentials for the new season</p>
-        </div>
+    <div class="container" id="shop">
+        <div class="section-title">Best Sellers</div>
         
         <div class="grid">
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="image-box">
-                    <span class="badge">Best Seller</span>
-                    <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nail Kit">
+            
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-wrap">
+                    <span class="badge">Viral</span>
+                    <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?w=500&q=80" alt="Nail Kit">
                 </div>
-                <div class="card-details">
-                    <h3>Pro Gel Nail Kit</h3>
-                    <span class="price">$24.99</span>
-                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Check on Amazon <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="image-box">
-                    <span class="badge" style="background:white; color:black;">Trending</span>
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
-                </div>
-                <div class="card-details">
-                    <h3>Chic Summer Dress</h3>
-                    <span class="price">$45.00</span>
-                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Shop Now <i class="fas fa-arrow-right"></i></a>
+                <div class="info">
+                    <h3>Polygel Nail Kit</h3>
+                    <div class="price">$24.99 <span class="old-price">$40</span></div>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy-small">Check Price</a>
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <div class="image-box">
-                    <span class="badge">50% OFF</span>
-                    <img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-wrap">
+                    <span class="badge">New</span>
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Fashion">
                 </div>
-                <div class="card-details">
-                    <h3>Gold Layered Chain</h3>
-                    <span class="price">$12.50</span>
-                    <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">View Deal <i class="fas fa-arrow-right"></i></a>
+                <div class="info">
+                    <h3>Velvet Mini Dress</h3>
+                    <div class="price">$45.00</div>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy-small">Shop Now</a>
                 </div>
             </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="img-wrap">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Gold Jewelry">
+                </div>
+                <div class="info">
+                    <h3>Gold Chain Set</h3>
+                    <div class="price">$12.50</div>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy-small">View</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="img-wrap">
+                    <span class="badge">-20%</span>
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=500&q=80" alt="Rings">
+                </div>
+                <div class="info">
+                    <h3>Stackable Rings</h3>
+                    <div class="price">$18.00</div>
+                    <a href="AMAZON_LINK_HERE" class="btn-buy-small">Shop Now</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Style & Beauty.</p>
-        <p style="opacity: 0.6;">As an Amazon Associate, I earn from qualifying purchases.</p>
+        <p>&copy; 2025 Style & Beauty</p>
+        <p>As an Amazon Associate, I earn from qualifying purchases.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true, // Animations happen only once while scrolling down
+            once: true,
+            offset: 50, // Triggers animation sooner on mobile
+            duration: 800,
         });
     </script>
 </body>
