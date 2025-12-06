@@ -3,228 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style & Beauty | Fashion & Nail Inspiration</title>
+    <title>Style & Beauty | Premium Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        /* --- General Styles --- */
+        /* --- Modern Reset & Variables --- */
         :root {
-            --primary-color: #fdfbf7; /* Creamy White Background */
-            --text-color: #333333;
-            --accent-color: #d4af37; /* Gold for luxury feel */
-            --button-bg: #000000;
-            --button-text: #ffffff;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-serif: 'Georgia', serif;
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: var(--font-main);
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f0f; /* Dark Luxury Theme */
+            color: white;
+            overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* --- Header --- */
-        header {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: #666;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Parallax Hero Section --- */
         .hero {
-            background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Luxury Makeup/Fashion Image */
-            background-size: cover;
+            /* ඔයා කැමතිම කෙල්ලෙක් ඉන්න Luxury ෆොටෝ එක මෙතනට දාන්න */
+            background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            height: 100vh;
+            background-attachment: fixed; /* Parallax Effect */
             background-position: center;
-            height: 60vh;
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
             position: relative;
         }
 
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.4);
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0f0f0f);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            text-align: center;
             padding: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            max-width: 600px;
         }
 
         .hero h1 {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn-hero {
-            background-color: white;
-            color: black;
-            padding: 12px 30px;
+        .btn-glow {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #D4AF37, #F2D06B);
+            color: #000;
+            text-decoration: none;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             transition: 0.3s;
         }
 
-        .btn-hero:hover {
-            background-color: var(--accent-color);
-            color: white;
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
         }
 
-        /* --- Categories --- */
+        /* --- Collections Grid --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 20px;
+            padding: 80px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--gold);
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
+        /* --- Glassmorphism Cards --- */
         .card {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            text-align: center;
-            padding-bottom: 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--gold);
         }
 
         .card img {
             width: 100%;
-            height: 300px;
+            height: 350px;
             object-fit: cover;
+            transition: 0.5s;
         }
 
-        .card h3 {
-            margin: 15px 0 5px;
-            font-size: 1.2rem;
+        .card:hover img {
+            transform: scale(1.1);
         }
 
-        .card p {
-            font-size: 0.9rem;
-            color: #777;
-            padding: 0 15px;
-        }
+        .card-info { padding: 20px; text-align: center; }
+        
+        .card h3 { color: #fff; margin: 10px 0; }
+        .card p { color: #ccc; font-size: 0.9rem; }
 
         .btn-shop {
             display: inline-block;
             margin-top: 15px;
             padding: 10px 25px;
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 5px;
             transition: 0.3s;
         }
 
         .btn-shop:hover {
-            background-color: var(--accent-color);
+            background: var(--gold);
+            color: #000;
         }
 
         /* --- Footer --- */
         footer {
-            background-color: #222;
-            color: #fff;
             text-align: center;
-            padding: 2rem 0;
+            padding: 40px;
+            color: #666;
             font-size: 0.8rem;
+            border-top: 1px solid #333;
         }
-        
-        footer a { color: #aaa; }
 
-        /* Mobile Responsiveness */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Style & Beauty</div>
-        <div class="tagline">Curated Fashion, Nails & Lifestyle Inspiration</div>
+    <header class="hero">
+        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
+            <h1>Style & Beauty</h1>
+            <p style="color: #ddd; font-size: 1.1rem; margin: 20px 0;">Curated Fashion & Nail Art for the Modern Aesthetic.</p>
+            <a href="#shop" class="btn-glow">Explore Trends</a>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Elevate Your Everyday</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Discover the best nail art kits, trendy fashion, and beauty essentials.</p>
-            <a href="#collections" class="btn-hero">Shop Trends</a>
-        </div>
-    </section>
-
-    <div class="container" id="collections">
-        <h2 class="section-title">Editor's Picks</h2>
+    <div class="container" id="shop">
+        <h2 class="section-title" data-aos="fade-up">Trending Now</h2>
         
         <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nail Art Kit">
-                <h3>The Ultimate Nail Kit</h3>
-                <p>Salon quality nails at home. UV Lamp + 10 Gel Colors included.</p>
-                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">Check Price</a>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nails">
+                <div class="card-info">
+                    <h3>Pro Nail Kit</h3>
+                    <p>Salon quality gel nails at home.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-shop">Check Price</a>
+                </div>
             </div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trendy Outfit">
-                <h3>Chic Summer Dress</h3>
-                <p>The viral dress everyone is talking about. Perfect for any occasion.</p>
-                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">Shop Look</a>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dress">
+                <div class="card-info">
+                    <h3>The Viral Dress</h3>
+                    <p>Perfect for any evening occasion.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-shop">Shop Look</a>
+                </div>
             </div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gold Accessories">
-                <h3>Gold Jewelry Set</h3>
-                <p>Tarnish-free, minimalist jewelry to elevate your style game.</p>
-                <a href="YOUR_AMAZON_LINK_HERE" class="btn-shop" target="_blank">View Details</a>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jewelry">
+                <div class="card-info">
+                    <h3>Gold Essentials</h3>
+                    <p>Tarnish-free luxury jewelry.</p>
+                    <a href="AMAZON_LINK_HERE" class="btn-shop">View Collection</a>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Style & Beauty. All rights reserved.</p>
-        <p style="margin-top: 10px; opacity: 0.7;">As an Amazon Associate, I earn from qualifying purchases.</p>
+        <p>&copy; 2025 Style & Beauty. As an Amazon Associate, I earn from qualifying purchases.</p>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Animations start here
+    </script>
 
 </body>
 </html>
