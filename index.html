@@ -6,14 +6,15 @@
     <title>Style & Beauty | The Exclusive Edit</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* --- CSS Variables & Reset --- */
         :root {
             --gold: #D4AF37;
             --dark: #0a0a0a;
             --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         body {
@@ -25,8 +26,9 @@
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; }
 
-        /* --- ADVANCED HERO SECTION (VIDEO) --- */
+        /* --- ADVANCED SLIDESHOW HERO SECTION --- */
         .hero {
             position: relative;
             height: 100vh;
@@ -36,71 +38,110 @@
             overflow: hidden;
         }
 
-        /* Video Background Styling */
-        .video-bg {
+        /* Slideshow Container */
+        .hero-slideshow {
             position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto;
-            transform: translate(-50%, -50%);
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            filter: brightness(0.4); /* Darken video so text pops */
         }
 
+        /* Individual Slides */
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: slideAnimation 18s infinite ease-in-out;
+            opacity: 0;
+            filter: brightness(0.5); /* Darken images slightly */
+        }
+
+        /* Slide Images */
+        .slide:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1920');
+            animation-delay: 0s;
+        }
+        .slide:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920');
+            animation-delay: 6s;
+        }
+        .slide:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1920');
+            animation-delay: 12s;
+        }
+
+        /* Slideshow Keyframes Animation */
+        @keyframes slideAnimation {
+            0% { opacity: 0; transform: scale(1); }
+            5% { opacity: 1; }
+            33% { opacity: 1; transform: scale(1.05); } /* Subtle zoom effect */
+            38% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Glassmorphism Content Box */
         .hero-content {
             z-index: 2;
             text-align: center;
-            padding: 40px;
+            padding: 50px;
             border: 1px solid var(--glass-border);
-            background: rgba(0, 0, 0, 0.3); /* Glass effect */
-            backdrop-filter: blur(8px);
-            border-radius: 0; /* Boxy luxury look */
+            background: rgba(0, 0, 0, 0.4); /* Glass effect */
+            backdrop-filter: blur(10px); /* Blurs the background behind the box */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             max-width: 700px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin: 0;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, #D4AF37);
+            background: linear-gradient(to right, #fff, var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
 
         .subtitle {
             font-style: italic;
-            font-size: 1.2rem;
-            margin-top: 10px;
+            font-size: 1.3rem;
+            margin-top: 15px;
             color: #ddd;
+            letter-spacing: 1px;
         }
 
         .btn-luxury {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 45px;
+            margin-top: 35px;
+            padding: 15px 50px;
             border: 1px solid var(--gold);
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-decoration: none;
-            transition: 0.4s;
             font-size: 0.9rem;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: 0.6s;
         }
 
         .btn-luxury:hover {
             background: var(--gold);
             color: #000;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
-        /* --- PRODUCT GRID WITH BADGES --- */
+        .btn-luxury:hover::before { left: 100%; }
+
+        /* --- PRODUCT GRID --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
         
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
+        .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-size: 3rem; margin-bottom: 10px; color: var(--gold); }
         .section-header p { color: #888; text-transform: uppercase; letter-spacing: 2px; }
 
@@ -114,100 +155,51 @@
             background: var(--glass);
             border: 1px solid var(--glass-border);
             transition: 0.4s;
-            position: relative; /* For badges */
+            position: relative;
         }
 
         .card:hover { transform: translateY(-10px); border-color: var(--gold); }
 
         .image-box { position: relative; overflow: hidden; height: 400px; }
-        
-        .image-box img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: 0.6s;
-        }
-
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .card:hover .image-box img { transform: scale(1.1); }
 
-        /* SALE BADGE (Advanced) */
         .badge {
-            position: absolute;
-            top: 15px; left: 15px;
-            background: var(--gold);
-            color: black;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            z-index: 2;
+            position: absolute; top: 15px; left: 15px;
+            background: var(--gold); color: black;
+            padding: 5px 12px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; z-index: 2;
         }
 
         .card-details { padding: 25px; text-align: center; }
-        .card-details h3 { margin: 10px 0; font-size: 1.5rem; }
+        .card-details h3 { margin: 10px 0; font-size: 1.5rem; color: #fff; }
         .price { color: var(--gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: block; }
         
         .btn-buy {
-            display: inline-block;
-            width: 100%;
-            padding: 12px 0;
-            background: #222;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            display: inline-block; width: 100%; padding: 12px 0;
+            background: #222; color: white; text-transform: uppercase;
+            font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s;
         }
         .btn-buy:hover { background: var(--gold); color: black; }
 
-        /* --- NEWSLETTER SECTION --- */
-        .newsletter {
-            background: #111;
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 1px solid #222;
+        /* --- FOOTER --- */
+        footer {
+            background: #111; padding: 40px; text-align: center;
+            color: #555; font-size: 0.8rem; border-top: 1px solid #222;
         }
-        
-        .input-group {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+        footer p { margin: 5px 0; }
 
-        .input-group input {
-            padding: 15px;
-            width: 300px;
-            background: #000;
-            border: 1px solid #333;
-            color: white;
-            font-family: 'Jost', sans-serif;
-        }
-
-        .input-group button {
-            padding: 15px 30px;
-            background: var(--gold);
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
-        footer a { color: #777; text-decoration: none; }
-
-        /* Mobile Fix */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .input-group { flex-direction: column; align-items: center; }
-            .input-group input { width: 100%; max-width: 300px; }
+            .hero h1 { font-size: 3rem; }
+            .hero-content { padding: 30px; margin: 20px; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <video autoplay muted loop playsinline class="video-bg">
-            <source src="https://cdn.coverr.co/videos/crop/y2mate.is%20-%20Fashion%20Model%20Posing%20In%20Neon%20Lights-Zz6_lYv_2-720p-1654162092923.mp4" type="video/mp4">
-        </video>
+        <div class="hero-slideshow">
+            <div class="slide"></div> <div class="slide"></div> <div class="slide"></div> </div>
 
         <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
             <h1>Style & Beauty</h1>
@@ -231,7 +223,6 @@
                 <div class="card-details">
                     <h3>Pro Gel Nail Kit</h3>
                     <span class="price">$24.99</span>
-                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">Complete home salon set with UV lamp and 10 colors.</p>
                     <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Check on Amazon <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -239,12 +230,11 @@
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="image-box">
                     <span class="badge" style="background:white; color:black;">Trending</span>
-                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion">
                 </div>
                 <div class="card-details">
-                    <h3>Velvet Evening Dress</h3>
+                    <h3>Chic Summer Dress</h3>
                     <span class="price">$45.00</span>
-                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">The viral black velvet dress seen on TikTok.</p>
                     <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">Shop Now <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -257,30 +247,22 @@
                 <div class="card-details">
                     <h3>Gold Layered Chain</h3>
                     <span class="price">$12.50</span>
-                    <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">Tarnish-free 18k gold plated minimalist necklace.</p>
                     <a href="AMAZON_LINK_HERE" class="btn-buy" target="_blank">View Deal <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="newsletter" data-aos="fade-up">
-        <h3 style="color: var(--gold); font-size: 2rem;">Join the Inner Circle</h3>
-        <p>Get exclusive fashion tips and discount codes delivered to your inbox.</p>
-        <div class="input-group">
-            <input type="email" placeholder="Enter your email address">
-            <button>SUBSCRIBE</button>
-        </div>
-    </section>
-
     <footer>
-        <p>&copy; 2025 Style & Beauty. <br> <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
-        <p style="margin-top: 10px; opacity: 0.5;">As an Amazon Associate, I earn from qualifying purchases.</p>
+        <p>&copy; 2025 Style & Beauty.</p>
+        <p style="opacity: 0.6;">As an Amazon Associate, I earn from qualifying purchases.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true, // Animations happen only once while scrolling down
+        });
     </script>
 </body>
 </html>
