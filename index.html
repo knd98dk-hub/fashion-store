@@ -15,7 +15,6 @@
             --bg-light: #ffffff;
             --text-dark: #1a1a1a;
             --text-light: #ffffff;
-            /* The new "Hot Girl Summer" Gradient Colors */
             --hot-pink: #ff007f; 
             --electric-purple: #8a2be2;
             --gradient-main: linear-gradient(45deg, var(--hot-pink), var(--electric-purple));
@@ -31,6 +30,14 @@
             color: var(--text-dark);
             padding-bottom: 90px;
             overflow-x: hidden;
+            
+            /* --- NEW SUBTLE BACKGROUND PATTERN --- */
+            /* This creates tiny pink and purple sparkles across the page */
+            background-image: 
+                radial-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
+                radial-gradient(rgba(138, 43, 226, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px, 20px 20px;
+            background-position: 0 0, 15px 15px;
         }
 
         a { text-decoration: none !important; color: inherit; transition: 0.3s; }
@@ -40,9 +47,9 @@
             padding: 15px 25px;
             display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255, 255, 255, 0.9); /* Clean white tint */
+            background: rgba(255, 255, 255, 0.85); /* Slightly more transparent */
             backdrop-filter: blur(15px);
-            border-bottom: 2px solid rgba(255, 0, 127, 0.1); /* Subtle pink border */
+            border-bottom: 2px solid rgba(255, 0, 127, 0.1);
         }
 
         .brand {
@@ -50,20 +57,19 @@
             font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: 1px;
-            /* Gradient Text Effect */
             background: var(--gradient-main);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- HIGH ENERGY HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero {
             position: relative;
             margin: 10px;
             height: 550px;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(255, 0, 127, 0.2); /* Pink Shadow */
+            box-shadow: 0 20px 40px rgba(255, 0, 127, 0.2);
         }
 
         .hero img {
@@ -72,14 +78,11 @@
             object-position: center top; 
             transition: transform 5s ease;
         }
-        
-        /* Slow zoom effect */
         .hero:hover img { transform: scale(1.1); }
 
         .hero-overlay {
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 100%;
-            /* Colorful Gradient Overlay */
             background: linear-gradient(to top, rgba(138, 43, 226, 0.6), rgba(255, 0, 127, 0.3), transparent);
         }
 
@@ -105,7 +108,6 @@
             font-size: 1.1rem; color: #f0f0f0; margin-top: 10px; font-weight: 500;
         }
 
-        /* Colorful Animated Button */
         .btn-vibrant {
             display: inline-block;
             margin-top: 25px;
@@ -128,7 +130,7 @@
             box-shadow: 0 15px 35px rgba(138, 43, 226, 0.5);
         }
 
-        /* --- INSTAGRAM STYLE STORIES (Colorful Rings) --- */
+        /* --- STORIES --- */
         .stories-wrapper {
             padding: 20px 0 30px 15px;
             overflow-x: auto; white-space: nowrap; scrollbar-width: none;
@@ -142,12 +144,10 @@
         .story-ring {
             width: 75px; height: 75px;
             border-radius: 50%; padding: 3px;
-            /* Vibrant Gradient Ring */
             background: var(--gradient-main); 
             margin-bottom: 8px;
             transition: transform 0.3s;
         }
-        
         .story-item:hover .story-ring { transform: rotate(5deg) scale(1.05); }
 
         .story-ring img {
@@ -158,11 +158,10 @@
         }
 
         .story-item span {
-            font-size: 0.8rem; color: var(--text-dark);
-            font-weight: 600;
+            font-size: 0.8rem; color: var(--text-dark); font-weight: 600;
         }
 
-        /* --- PRODUCT GRID (Clean & Pop) --- */
+        /* --- PRODUCT GRID --- */
         .section-header {
             padding: 10px 25px;
             display: flex; justify-content: space-between; align-items: center;
@@ -178,16 +177,15 @@
         }
 
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95); /* Slightly transparent to show pattern */
             border-radius: 20px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid #f0f0f0;
         }
         
-        /* Float animation on hover */
         .card:hover { 
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(255, 0, 127, 0.15);
@@ -208,7 +206,6 @@
         }
         .card:hover .img-box img { transform: scale(1.08); }
 
-        /* Vibrant Tags */
         .tag {
             position: absolute; top: 12px; left: 12px;
             background: var(--gradient-main); color: white;
@@ -228,11 +225,10 @@
         .price {
             display: block;
             font-size: 1.1rem;
-            color: var(--hot-pink); /* Pink Price */
+            color: var(--hot-pink);
             font-weight: 800;
         }
 
-        /* Colorful Plus Button */
         .btn-plus {
             position: absolute; bottom: 12px; right: 12px;
             width: 38px; height: 38px;
@@ -245,7 +241,7 @@
         }
         .card:hover .btn-plus { transform: rotate(90deg); }
 
-        /* --- BOTTOM NAV (Colorful Icons) --- */
+        /* --- BOTTOM NAV --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(255, 255, 255, 0.95);
@@ -260,7 +256,6 @@
             color: #aaa; font-size: 1.4rem;
             transition: 0.3s;
         }
-        /* Active icon gets the gradient color */
         .nav-icon.active i { 
             background: var(--gradient-main);
             -webkit-background-clip: text;
@@ -271,7 +266,7 @@
         footer {
             text-align: center; padding: 30px 20px 10px 20px;
             color: #666; font-size: 0.8rem;
-            background: #f9f9f9;
+            background: transparent; /* Make footer transparent to show pattern */
         }
     </style>
 </head>
