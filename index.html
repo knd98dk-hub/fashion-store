@@ -3,303 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>S&B | Luxury Fashion Edit</title>
+    <title>S&B | Worldwide Trends</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- PREMIUM THEME VARIABLES --- */
+        /* --- VIBRANT COLOR PALETTE --- */
         :root {
-            --bg-color: #050505; /* Deepest Black */
-            --card-bg: #121212;
-            --text-main: #ffffff;
-            --accent-gold: #D4AF37; /* Rich Gold */
-            --glass-nav: rgba(10, 10, 10, 0.9);
+            --bg-light: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            /* The new "Hot Girl Summer" Gradient Colors */
+            --hot-pink: #ff007f; 
+            --electric-purple: #8a2be2;
+            --gradient-main: linear-gradient(45deg, var(--hot-pink), var(--electric-purple));
+            --gradient-hover: linear-gradient(45deg, var(--electric-purple), var(--hot-pink));
         }
 
-        /* --- GLOBAL RESET --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             margin: 0; padding: 0;
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding-bottom: 90px; /* Space for bottom app bar */
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding-bottom: 90px;
             overflow-x: hidden;
         }
 
-        a { text-decoration: none !important; color: inherit; }
+        a { text-decoration: none !important; color: inherit; transition: 0.3s; }
 
-        /* --- STICKY TOP HEADER --- */
+        /* --- STICKY VIBRANT NAV --- */
         nav {
-            padding: 18px 25px;
+            padding: 15px 25px;
             display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 100;
-            background: var(--glass-nav);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.9); /* Clean white tint */
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid rgba(255, 0, 127, 0.1); /* Subtle pink border */
         }
 
         .brand {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, var(--accent-gold));
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            /* Gradient Text Effect */
+            background: var(--gradient-main);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
         }
 
-        /* --- HERO SECTION (NEW GIRL IMAGE) --- */
+        /* --- HIGH ENERGY HERO SECTION --- */
         .hero {
             position: relative;
-            margin: 15px;
-            height: 520px; /* Tall Premium Look */
-            border-radius: 20px;
+            margin: 10px;
+            height: 550px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(255, 0, 127, 0.2); /* Pink Shadow */
         }
 
         .hero img {
             width: 100%; height: 100%;
             object-fit: cover;
-            /* Focus on face for mobile */
             object-position: center top; 
-            transition: transform 10s ease;
+            transition: transform 5s ease;
         }
         
-        .hero:hover img { transform: scale(1.05); }
+        /* Slow zoom effect */
+        .hero:hover img { transform: scale(1.1); }
 
         .hero-overlay {
             position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 70%;
-            background: linear-gradient(to top, #000000 10%, transparent);
+            bottom: 0; left: 0; width: 100%; height: 100%;
+            /* Colorful Gradient Overlay */
+            background: linear-gradient(to top, rgba(138, 43, 226, 0.6), rgba(255, 0, 127, 0.3), transparent);
         }
 
         .hero-text {
             position: absolute;
-            bottom: 40px; left: 25px;
+            bottom: 50px; left: 25px;
             z-index: 2;
+            max-width: 80%;
         }
 
         .hero h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
             margin: 0;
             line-height: 1.1;
             color: white;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            font-weight: 800;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1rem; color: #ddd; margin-top: 10px;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem; color: #f0f0f0; margin-top: 10px; font-weight: 500;
         }
 
-        .btn-shop {
+        /* Colorful Animated Button */
+        .btn-vibrant {
             display: inline-block;
-            margin-top: 20px;
-            padding: 14px 35px;
-            background: var(--accent-gold);
-            color: black;
+            margin-top: 25px;
+            padding: 16px 40px;
+            background: var(--gradient-main);
+            color: white;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4);
+            transition: all 0.4s ease;
+            position: relative; overflow: hidden;
         }
 
-        /* --- INSTAGRAM STYLE STORIES --- */
-        .stories-wrapper {
-            padding: 10px 0 30px 15px;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none; /* Firefox */
+        .btn-vibrant:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.5);
         }
-        .stories-wrapper::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        /* --- INSTAGRAM STYLE STORIES (Colorful Rings) --- */
+        .stories-wrapper {
+            padding: 20px 0 30px 15px;
+            overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+        }
+        .stories-wrapper::-webkit-scrollbar { display: none; }
 
         .story-item {
-            display: inline-block;
-            text-align: center;
-            margin-right: 20px;
+            display: inline-block; text-align: center; margin-right: 20px;
         }
 
         .story-ring {
-            width: 70px; height: 70px;
-            border-radius: 50%;
-            padding: 3px;
-            /* Gold Gradient Ring */
-            background: linear-gradient(45deg, var(--accent-gold), #333); 
+            width: 75px; height: 75px;
+            border-radius: 50%; padding: 3px;
+            /* Vibrant Gradient Ring */
+            background: var(--gradient-main); 
             margin-bottom: 8px;
+            transition: transform 0.3s;
         }
+        
+        .story-item:hover .story-ring { transform: rotate(5deg) scale(1.05); }
 
         .story-ring img {
             width: 100%; height: 100%;
             border-radius: 50%;
-            border: 3px solid var(--bg-color);
+            border: 3px solid var(--bg-light);
             object-fit: cover;
         }
 
         .story-item span {
-            font-size: 0.7rem; color: #bbb;
-            display: block; letter-spacing: 0.5px; text-transform: uppercase;
+            font-size: 0.8rem; color: var(--text-dark);
+            font-weight: 600;
         }
 
-        /* --- PRODUCT GRID --- */
+        /* --- PRODUCT GRID (Clean & Pop) --- */
         .section-header {
-            padding: 10px 20px;
-            display: flex; justify-content: space-between; align-items: flex-end;
-            margin-bottom: 10px;
+            padding: 10px 25px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px;
         }
         .section-header h3 {
-            font-family: 'Cinzel', serif; font-size: 1.5rem; color: white; margin: 0;
+            font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; margin: 0;
         }
-        .view-all { font-size: 0.8rem; color: var(--accent-gold); }
+        .view-all { font-size: 0.9rem; color: var(--hot-pink); font-weight: 600; }
 
         .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Mobile 2 Column */
-            gap: 15px;
-            padding: 0 15px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 15px;
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+            border: 1px solid #f0f0f0;
         }
         
-        .card:active { transform: scale(0.98); }
+        /* Float animation on hover */
+        .card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 127, 0.15);
+            border-color: rgba(255, 0, 127, 0.3);
+        }
 
         .img-box {
             position: relative;
-            height: 250px; /* Tall Portrait for Fashion */
-            background: #222;
+            height: 260px;
+            background: #f8f8f8;
+            overflow: hidden;
         }
 
         .img-box img {
             width: 100%; height: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
         }
+        .card:hover .img-box img { transform: scale(1.08); }
 
+        /* Vibrant Tags */
         .tag {
-            position: absolute; top: 10px; left: 10px;
-            background: rgba(255,255,255,0.95); color: black;
-            padding: 4px 10px; font-size: 0.6rem; font-weight: 800;
-            border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+            position: absolute; top: 12px; left: 12px;
+            background: var(--gradient-main); color: white;
+            padding: 5px 12px; font-size: 0.65rem; font-weight: 700;
+            border-radius: 30px; text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
         }
 
-        .info { padding: 15px; }
+        .info { padding: 18px 15px; text-align: left; }
 
         .info h4 {
-            font-size: 0.85rem; color: #eee; margin: 0 0 6px 0;
-            font-weight: 400; line-height: 1.4;
-            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            font-size: 0.9rem; color: #333; margin: 0 0 8px 0;
+            font-weight: 600; line-height: 1.4;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        /* Gold Price - No Underline */
         .price {
             display: block;
-            font-size: 1rem;
-            color: var(--accent-gold);
-            font-weight: 700;
-            margin-top: 5px;
+            font-size: 1.1rem;
+            color: var(--hot-pink); /* Pink Price */
+            font-weight: 800;
         }
 
+        /* Colorful Plus Button */
         .btn-plus {
-            position: absolute; bottom: 10px; right: 10px;
-            width: 32px; height: 32px;
-            background: white; border-radius: 50%;
+            position: absolute; bottom: 12px; right: 12px;
+            width: 38px; height: 38px;
+            background: var(--gradient-main);
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: black; font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            color: white; font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.4);
+            transition: 0.3s;
         }
+        .card:hover .btn-plus { transform: rotate(90deg); }
 
-        /* --- BOTTOM APP NAVIGATION --- */
+        /* --- BOTTOM NAV (Colorful Icons) --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(5, 5, 5, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             display: flex; justify-content: space-around;
-            padding: 15px 10px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 10px 25px 10px;
+            border-top: 1px solid rgba(0,0,0,0.05);
             z-index: 999;
-            padding-bottom: 20px; /* Safe area for modern phones */
         }
 
         .nav-icon {
-            color: #666; font-size: 1.3rem;
+            color: #aaa; font-size: 1.4rem;
             transition: 0.3s;
         }
-        .nav-icon.active { color: var(--accent-gold); }
+        /* Active icon gets the gradient color */
+        .nav-icon.active i { 
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         /* --- FOOTER --- */
         footer {
-            text-align: center; padding: 40px 20px 20px 20px;
-            color: #444; font-size: 0.7rem;
+            text-align: center; padding: 30px 20px 10px 20px;
+            color: #666; font-size: 0.8rem;
+            background: #f9f9f9;
         }
-
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand">S&B</div>
-        <div style="color:white;"><i class="fas fa-search"></i></div>
+        <div class="brand" data-aos="fade-down">S&B TRENDS</div>
+        <div style="color: var(--hot-pink); font-size: 1.2rem;"><i class="fas fa-bag-shopping"></i></div>
     </nav>
 
-    <div class="hero" data-aos="fade-up">
-        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1000&auto=format&fit=crop" alt="Fashion Model">
+    <div class="hero" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1529139574466-a302c27e3844?q=80&w=800&auto=format&fit=crop" alt="Fashion Models having fun">
         <div class="hero-overlay"></div>
         <div class="hero-text">
-            <h2>Own Your<br>Glow ✨</h2>
-            <p>Viral trends curated for the IT-Girl.</p>
-            <a href="#shop" class="btn-shop">Explore</a>
+            <h2 data-aos="fade-up" data-aos-delay="200">WORLDWIDE<br>GIRL ENERGY⚡</h2>
+            <p data-aos="fade-up" data-aos-delay="400">The hottest viral trends, curated globally.</p>
+            <a href="#shop" class="btn-vibrant" data-aos="fade-up" data-aos-delay="600">Shop The Drop</a>
         </div>
     </div>
 
-    <div class="stories-wrapper" data-aos="fade-right">
+    <div class="stories-wrapper" data-aos="fade-right" data-aos-delay="300">
         <div class="story-item">
-            <div class="story-ring"><img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?w=100&q=80" alt="Nails"></div>
-            <span>Nails</span>
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=100&q=80" alt="Nails"></div>
+            <span>🔥 Hot</span>
         </div>
         <div class="story-item">
             <div class="story-ring"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=100&q=80" alt="Glow"></div>
-            <span>Beauty</span>
+            <span>✨ Glow</span>
         </div>
         <div class="story-item">
-            <div class="story-ring"><img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?w=100&q=80" alt="Jewelry"></div>
-            <span>Gold</span>
-        </div>
-        <div class="story-item">
-            <div class="story-ring"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=100&q=80" alt="Hair"></div>
-            <span>Hair</span>
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=100&q=80" alt="Jewelry"></div>
+            <span>💎 Bling</span>
         </div>
         <div class="story-item">
             <div class="story-ring"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=100&q=80" alt="Fashion"></div>
-            <span>Style</span>
+            <span>👗 Style</span>
+        </div>
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1586896566682-c3a309059144?w=100&q=80" alt="Sale"></div>
+            <span>💸 Sale</span>
         </div>
     </div>
 
     <div class="section-header">
-        <h3>Viral Now</h3>
-        <span class="view-all">See All</span>
+        <h3>Viral Right Now</h3>
+        <span class="view-all">View All</span>
     </div>
 
     <div class="grid" id="shop">
         
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up">
             <div class="img-box">
-                <span class="tag">#1 Seller</span>
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80" alt="Nail Kit">
+                <span class="tag">#1 Global Seller</span>
+                <img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?w=500&q=80" alt="Nail Kit">
                 <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
@@ -310,12 +336,12 @@
 
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="100">
             <div class="img-box">
-                <span class="tag">Viral</span>
-                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80" alt="Sol de Janeiro">
+                <span class="tag">TikTok Viral</span>
+                <img src="https://images.unsplash.com/photo-1556228351-29b80076104a?w=500&q=80" alt="Summer Glow">
                 <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
-                <h4>Sol de Janeiro Jet Set</h4>
+                <h4>Sol de Janeiro Glow Set</h4>
                 <span class="price">$30.00</span>
             </div>
         </a>
@@ -323,7 +349,7 @@
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="200">
             <div class="img-box">
                 <span class="tag">Trending</span>
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Gold Chain">
+                <img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?w=500&q=80" alt="Gold Chain">
                 <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
@@ -334,7 +360,7 @@
 
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="300">
             <div class="img-box">
-                <span class="tag">New</span>
+                <span class="tag">Must Have</span>
                 <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500&q=80" alt="Thermal Brush">
                 <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
@@ -347,19 +373,20 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Style & Beauty. As an Amazon Associate, I earn from qualifying purchases.</p>
+        <p>Worldwide Shipping 🌍</p>
+        <p style="opacity: 0.7; margin-top: 5px;">As an Amazon Associate, I earn from qualifying purchases.</p>
     </footer>
 
     <div class="bottom-nav">
-        <div class="nav-icon active"><i class="fas fa-home"></i></div>
+        <div class="nav-icon active"><i class="fas fa-house-chimney"></i></div>
         <div class="nav-icon"><i class="fas fa-heart"></i></div>
-        <div class="nav-icon"><i class="fas fa-shopping-bag"></i></div>
+        <div class="nav-icon"><i class="fas fa-bolt"></i></div>
         <div class="nav-icon"><i class="far fa-user"></i></div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 800, offset: 50 });
+        AOS.init({ once: true, duration: 700, offset: 60, easing: 'ease-out-back' });
     </script>
 </body>
 </html>
