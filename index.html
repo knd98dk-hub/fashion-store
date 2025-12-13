@@ -3,287 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>S&B | Chic Trends</title>
+    <title>S&B | The Luxury Edit</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* --- THEME SETTINGS --- */
         :root {
-            --primary: #ff0080; /* Hot Pink */
-            --secondary: #7928ca; /* Purple */
-            --gradient: linear-gradient(135deg, #ff0080, #7928ca);
-            --bg-pattern: url('https://img.freepik.com/free-vector/hand-drawn-fashion-element-pattern_23-2148045667.jpg?w=740&t=st=1709400000~exp=1709400600~hmac=abcdef'); 
-            /* ඉහත ලින්ක් එක මගින් Fashion Arts පසුබිමට එක් වේ */
+            --bg-color: #050505; /* Deep Black Background */
+            --card-bg: #121212;
+            --text-main: #ffffff;
+            --accent-gold: #D4AF37; /* Luxury Gold */
+            --glass-nav: rgba(10, 10, 10, 0.9);
         }
 
+        /* --- GLOBAL RESET --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             margin: 0; padding: 0;
-            font-family: 'Poppins', sans-serif;
-            color: #333;
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 90px; /* Space for bottom nav */
             overflow-x: hidden;
-            padding-bottom: 100px;
-            
-            /* --- NEW ART BACKGROUND --- */
-            background-color: #fff0f5; /* Light Pink Base */
-            /* Fashion Sketches Pattern */
-            background-image: url('https://img.freepik.com/free-vector/fashion-accessories-seamless-pattern_1284-10651.jpg?size=626&ext=jpg');
-            background-size: 300px; /* රටාවේ ප්‍රමාණය */
-            background-blend-mode: overlay;
-            background-attachment: fixed; /* Scroll වෙද්දි Background එක හෙලවෙන්නේ නෑ */
-        }
-
-        /* White Overlay to make text readable */
-        body::before {
-            content: ''; position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.85); /* 85% White Fade */
-            z-index: -1;
         }
 
         a { text-decoration: none !important; color: inherit; }
 
-        /* --- HEADER --- */
+        /* --- STICKY HEADER --- */
         nav {
-            padding: 15px 20px;
+            padding: 18px 25px;
             display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 4px 20px rgba(255, 0, 128, 0.1);
+            background: var(--glass-nav);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .brand {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem; font-weight: 900;
-            background: var(--gradient);
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, var(--accent-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-weight: 700;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SLIDESHOW SECTION --- */
         .hero {
             position: relative;
             margin: 15px;
-            height: 480px;
-            border-radius: 30px;
+            height: 520px; /* Tall Premium Look */
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(121, 40, 202, 0.3);
-            border: 4px solid white;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .hero img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            /* New Energetic Model */
-            object-position: center top;
+        /* Slideshow Container */
+        .hero-slideshow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        /* Slide Items */
+        .slide-item {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center top;
+            opacity: 0;
+            animation: slideAnimation 16s infinite; /* Loop 4 images */
+            transition: transform 10s;
+        }
+
+        /* Image 1: Fashion Model */
+        .slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1000&auto=format&fit=crop');
+            animation-delay: 0s;
+        }
+        /* Image 2: Nail Art */
+        .slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1000&auto=format&fit=crop');
+            animation-delay: 4s;
+        }
+        /* Image 3: Jewelry */
+        .slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=1000&auto=format&fit=crop');
+            animation-delay: 8s;
+        }
+        /* Image 4: Lifestyle/Vibe */
+        .slide-4 {
+            background-image: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1000&auto=format&fit=crop');
+            animation-delay: 12s;
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideAnimation {
+            0% { opacity: 0; transform: scale(1); }
+            5% { opacity: 1; }
+            25% { opacity: 1; }
+            30% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 0; }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, #000000 15%, transparent 70%);
+            z-index: 1;
         }
 
         .hero-text {
             position: absolute;
-            bottom: 0; left: 0; width: 100%;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            text-align: center;
+            bottom: 40px; left: 25px;
+            z-index: 2;
         }
 
         .hero h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: white; font-size: 2.5rem; margin: 0;
-            text-transform: uppercase; font-weight: 900;
-            line-height: 1; text-shadow: 2px 2px 0px #ff0080;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            margin: 0;
+            line-height: 1.1;
+            color: white;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
 
-        .btn-main {
-            display: inline-block; margin-top: 15px;
-            padding: 12px 35px;
-            background: white; color: #ff0080;
-            font-weight: 800; border-radius: 50px;
+        .hero p {
+            font-size: 1rem; color: #ddd; margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-shop {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 35px;
+            background: var(--accent-gold);
+            color: black;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: 0.3s;
         }
 
         /* --- STORIES --- */
-        .stories {
-            padding: 20px 0 20px 15px;
-            overflow-x: auto; white-space: nowrap;
+        .stories-wrapper {
+            padding: 10px 0 30px 15px;
+            overflow-x: auto;
+            white-space: nowrap;
             scrollbar-width: none;
         }
-        .stories::-webkit-scrollbar { display: none; }
+        .stories-wrapper::-webkit-scrollbar { display: none; }
 
-        .story { display: inline-block; margin-right: 18px; text-align: center; }
-        
-        .ring {
+        .story-item {
+            display: inline-block; text-align: center; margin-right: 20px;
+        }
+
+        .story-ring {
             width: 70px; height: 70px;
             border-radius: 50%; padding: 3px;
-            background: var(--gradient);
-            margin-bottom: 5px;
+            background: linear-gradient(45deg, var(--accent-gold), #333); 
+            margin-bottom: 8px;
         }
-        
-        .ring img {
-            width: 100%; height: 100%; border-radius: 50%;
-            border: 3px solid white; object-fit: cover;
+
+        .story-ring img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--bg-color);
+            object-fit: cover;
         }
-        
-        .story span { font-size: 0.75rem; font-weight: 700; color: #555; }
+
+        .story-item span {
+            font-size: 0.7rem; color: #bbb;
+            display: block; letter-spacing: 0.5px; text-transform: uppercase;
+        }
 
         /* --- GRID --- */
-        .section-title {
-            padding: 0 20px; margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem; font-weight: 800;
+        .section-header {
+            padding: 10px 20px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 10px;
         }
+        .section-header h3 {
+            font-family: 'Cinzel', serif; font-size: 1.5rem; color: white; margin: 0;
+        }
+        .view-all { font-size: 0.8rem; color: var(--accent-gold); }
 
         .grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 15px; padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Column */
+            gap: 15px;
+            padding: 0 15px;
         }
 
         .card {
-            background: white; border-radius: 20px;
-            overflow: hidden; position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: transform 0.2s;
         }
-        .card:active { transform: scale(0.97); }
+        .card:active { transform: scale(0.98); }
 
-        .img-wrap {
-            height: 200px; position: relative;
-            background: #eee;
+        .img-box {
+            position: relative;
+            height: 250px;
+            background: #222;
         }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+        .img-box img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
 
         .tag {
             position: absolute; top: 10px; left: 10px;
-            background: var(--primary); color: white;
-            padding: 4px 10px; font-size: 0.6rem; font-weight: 700;
-            border-radius: 20px;
+            background: rgba(255,255,255,0.95); color: black;
+            padding: 4px 10px; font-size: 0.6rem; font-weight: 800;
+            border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .info { padding: 12px; }
+        .info { padding: 15px; }
+
         .info h4 {
-            font-size: 0.85rem; margin: 0 0 5px 0;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            font-size: 0.85rem; color: #eee; margin: 0 0 6px 0;
+            font-weight: 400; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
-        
-        .price { color: var(--secondary); font-weight: 800; font-size: 1rem; }
 
-        .add-btn {
+        .price {
+            display: block;
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .btn-plus {
             position: absolute; bottom: 10px; right: 10px;
             width: 32px; height: 32px;
-            background: var(--gradient); color: white;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 15px rgba(255, 0, 128, 0.4);
+            background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: black; font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         /* --- BOTTOM NAV --- */
         .bottom-nav {
-            position: fixed; bottom: 20px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            background: #222;
-            border-radius: 50px;
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
             display: flex; justify-content: space-around;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 15px 10px;
+            border-top: 1px solid rgba(255,255,255,0.05);
             z-index: 999;
+            padding-bottom: 20px;
         }
-        .nav-icon { color: #888; font-size: 1.2rem; }
-        .nav-icon.active { color: white; }
 
-        /* Footer */
-        footer { text-align: center; padding: 20px; font-size: 0.7rem; color: #666; }
+        .nav-icon { color: #666; font-size: 1.3rem; transition: 0.3s; }
+        .nav-icon.active { color: var(--accent-gold); }
 
+        /* --- FOOTER --- */
+        footer {
+            text-align: center; padding: 40px 20px 20px 20px;
+            color: #444; font-size: 0.7rem;
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand">S&B GIRL</div>
-        <div style="color:var(--primary); font-size:1.2rem;"><i class="fas fa-heart"></i></div>
+        <div class="brand">S&B</div>
+        <div style="color:white;"><i class="fas fa-search"></i></div>
     </nav>
 
-    <div class="hero" data-aos="zoom-in">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop" alt="Fashion Girl">
+    <div class="hero" data-aos="fade-up">
+        
+        <div class="hero-slideshow">
+            <div class="slide-item slide-1"></div> <div class="slide-item slide-2"></div> <div class="slide-item slide-3"></div> <div class="slide-item slide-4"></div> </div>
+
+        <div class="hero-overlay"></div>
         <div class="hero-text">
-            <h2>Super<br>Style</h2>
-            <a href="#shop" class="btn-main">Shop Now</a>
+            <h2>Luxury<br>Redefined</h2>
+            <p>Viral trends curated for the IT-Girl.</p>
+            <a href="#shop" class="btn-shop">Explore</a>
         </div>
     </div>
 
-    <div class="stories" data-aos="fade-right">
-        <div class="story"><div class="ring"><img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?w=100" alt="Nails"></div><span>Nails</span></div>
-        <div class="story"><div class="ring"><img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=100" alt="Rings"></div><span>Bling</span></div>
-        <div class="story"><div class="ring"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=100" alt="Skin"></div><span>Glow</span></div>
-        <div class="story"><div class="ring"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=100" alt="Sale"></div><span>Sale</span></div>
-        <div class="story"><div class="ring"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100" alt="Dress"></div><span>Style</span></div>
+    <div class="stories-wrapper" data-aos="fade-right">
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?w=100&q=80" alt="Nails"></div>
+            <span>Nails</span>
+        </div>
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=100&q=80" alt="Glow"></div>
+            <span>Beauty</span>
+        </div>
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?w=100&q=80" alt="Jewelry"></div>
+            <span>Gold</span>
+        </div>
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=100&q=80" alt="Hair"></div>
+            <span>Hair</span>
+        </div>
+        <div class="story-item">
+            <div class="story-ring"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=100&q=80" alt="Fashion"></div>
+            <span>Style</span>
+        </div>
     </div>
 
-    <div class="section-title">Trending Now 🔥</div>
+    <div class="section-header">
+        <h3>Viral Now</h3>
+        <span class="view-all">See All</span>
+    </div>
+
     <div class="grid" id="shop">
         
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up">
-            <div class="img-wrap">
-                <span class="tag">#1 Viral</span>
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500" alt="Nail Kit">
-                <div class="add-btn"><i class="fas fa-plus"></i></div>
+            <div class="img-box">
+                <span class="tag">#1 Seller</span>
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80" alt="Nail Kit">
+                <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
-                <h4>Beetles Nail Kit</h4>
-                <div class="price">$24.99</div>
+                <h4>Beetles Polygel Nail Kit</h4>
+                <span class="price">$24.99</span>
             </div>
         </a>
 
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="100">
-            <div class="img-wrap">
-                <span class="tag">Hot</span>
-                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500" alt="Sol de Janeiro">
-                <div class="add-btn"><i class="fas fa-plus"></i></div>
+            <div class="img-box">
+                <span class="tag">Viral</span>
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80" alt="Sol de Janeiro">
+                <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
-                <h4>Sol de Janeiro Mist</h4>
-                <div class="price">$30.00</div>
+                <h4>Sol de Janeiro Jet Set</h4>
+                <span class="price">$30.00</span>
             </div>
         </a>
 
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="200">
-            <div class="img-wrap">
-                <span class="tag">Must Have</span>
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500" alt="Chain">
-                <div class="add-btn"><i class="fas fa-plus"></i></div>
+            <div class="img-box">
+                <span class="tag">Trending</span>
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Gold Chain">
+                <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
-                <h4>Gold Layered Chain</h4>
-                <div class="price">$14.95</div>
+                <h4>14K Gold Layered Chain</h4>
+                <span class="price">$14.95</span>
             </div>
         </a>
 
         <a href="AMAZON_LINK_HERE" class="card" data-aos="fade-up" data-aos-delay="300">
-            <div class="img-wrap">
+            <div class="img-box">
                 <span class="tag">New</span>
-                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500" alt="Brush">
-                <div class="add-btn"><i class="fas fa-plus"></i></div>
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500&q=80" alt="Thermal Brush">
+                <div class="btn-plus"><i class="fas fa-plus"></i></div>
             </div>
             <div class="info">
-                <h4>Wavytalk Brush</h4>
-                <div class="price">$43.99</div>
+                <h4>Wavytalk Thermal Brush</h4>
+                <span class="price">$43.99</span>
             </div>
         </a>
+
     </div>
 
-    <footer>As an Amazon Associate, I earn from qualifying purchases.</footer>
+    <footer>
+        <p>&copy; 2025 Style & Beauty. As an Amazon Associate, I earn from qualifying purchases.</p>
+    </footer>
 
     <div class="bottom-nav">
         <div class="nav-icon active"><i class="fas fa-home"></i></div>
-        <div class="nav-icon"><i class="fas fa-search"></i></div>
-        <div class="nav-icon"><i class="fas fa-shopping-cart"></i></div>
+        <div class="nav-icon"><i class="fas fa-heart"></i></div>
+        <div class="nav-icon"><i class="fas fa-shopping-bag"></i></div>
         <div class="nav-icon"><i class="far fa-user"></i></div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+    <script>
+        AOS.init({ once: true, duration: 800, offset: 50 });
+    </script>
 </body>
 </html>
